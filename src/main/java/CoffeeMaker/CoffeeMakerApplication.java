@@ -50,7 +50,8 @@ public class CoffeeMakerApplication extends Application<CoffeeMakerConfiguration
         ArrayList<Drink> drinks = new ArrayList<>();
 
         //TODO: fix path
-        BufferedReader br = new BufferedReader(new FileReader("/Users/Vehagn/IdeaProjects/CoffeeMaker/CoffeeMaker/src/main/java/CoffeeMaker/drinks.csv"));
+        //BufferedReader br = new BufferedReader(new FileReader("/Users/Vehagn/IdeaProjects/CoffeeMaker/CoffeeMaker/src/main/java/CoffeeMaker/drinks.csv"));
+        BufferedReader br = new BufferedReader(new FileReader("/app/src/main/java/CoffeeMaker/drinks.csv"));
         String line;
         while ((line = br.readLine()) != null) {
             String[] values = line.split(";");
