@@ -11,7 +11,7 @@ public class Drink {
 
     public Drink() {
         this.drinkId = -1;
-        this.name = "";
+        this.name = null;
         this.temperature = 0.0;
         this.water = 0;
         this.coffee = 0;
@@ -29,8 +29,8 @@ public class Drink {
         this.size = drink.getSize();
     }
 
-    public Drink(int uuid, String name, double temperature, int water, int coffee, int milk) {
-        this.drinkId = uuid;
+    public Drink(int drinkId, String name, double temperature, int water, int coffee, int milk) {
+        this.drinkId = drinkId;
         this.name = name;
         this.temperature = temperature;
         this.water = water;
@@ -43,8 +43,8 @@ public class Drink {
         return drinkId;
     }
 
-    public void setDrinkId(int uuid) {
-        this.drinkId = uuid;
+    public void setDrinkId(int dinkId) {
+        this.drinkId = drinkId;
     }
 
     public String getName() {
@@ -108,5 +108,4 @@ public class Drink {
     public void updateSize() {
         this.size = this.getWater() + this.getCoffee() + this.getMilk();
     }
-
 }

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import static CoffeeMaker.CoffeeMakerApplication.*;
 
 public class DrinkService {
+    //TODO: Ponder moving ArrayList variable and functions over to MachineService
     private ArrayList drinks;
 
     public DrinkService(ArrayList drinks) {
@@ -17,12 +18,12 @@ public class DrinkService {
         return drinks;
     }
 
-    public Drink getDrinkFromId(int uuid) {
-        if (uuid < 0 || uuid > this.drinks.size()) {
+    public Drink getDrinkFromId(int drinkId) {
+        if (drinkId < 0 || drinkId > this.drinks.size()) {
             //TODO: Raise exception instead
-            uuid = 0;
+            drinkId = 0;
         }
-        Drink drink = (Drink) this.drinks.get(uuid);
+        Drink drink = (Drink) this.drinks.get(drinkId);
         return drink;
     }
 
@@ -32,6 +33,7 @@ public class DrinkService {
         int coffee = drink.getCoffee();
         int milk = drink.getMilk();
 
+        //TODO: Think about removing most abundant unit first, then shave off all in order given here
         while (size > MAX_DRINK_SIZE) {
             int overflow = (size-MAX_DRINK_SIZE);
             int spill = (overflow%3);
@@ -69,11 +71,14 @@ public class DrinkService {
         int coffee = drink.getCoffee();
         int size = drink.getSize();
 
+        // We shouldn't be able to remove coffee
+        amount = (amount<0)?(0):(amount);
+
+        // Don't try to fill more coffee than the cup can hold
         amount = (amount > (MAX_DRINK_SIZE+coffee))?(MAX_DRINK_SIZE-coffee):(amount);
 
-        int roomInCup = MAX_DRINK_SIZE-size;
-
         // Add more coffee without replacing anything if there's room in the cup
+        int roomInCup = MAX_DRINK_SIZE-size;
         coffee += (amount < roomInCup)?(amount):(roomInCup);
 
         // Try to replace the rest of the requested added coffee
@@ -82,7 +87,8 @@ public class DrinkService {
 
         // Try to replace all the water with coffee first
         if (tryToAdd > 0) {
-            if (water < tryToAdd) { // Try to replace water with coffee
+            // Try to replace water with coffee first
+            if (water < tryToAdd) {
                 tryToAdd -= water;
                 ableToAdd += water;
                 water = 0;
@@ -91,7 +97,8 @@ public class DrinkService {
                 ableToAdd += tryToAdd;
                 tryToAdd = 0;
             }
-            if (milk < tryToAdd) { // Replace milk with coffee is possible
+            // Next replace remaining milk with coffee
+            if (milk < tryToAdd) {
                 tryToAdd -= milk;
                 ableToAdd += milk;
                 milk = 0;
@@ -103,11 +110,11 @@ public class DrinkService {
             // Add as much coffee we've been able to make room for
             coffee += ableToAdd;
         }
-
+        //TODO: Exception/warning if (tryToAdd > 0) ?
         drink.updateRecipe(water, coffee, milk);
     }
 
-    public static void changeTemperature(Drink drink, double temperature) {
+    public static void setDrinkTemperature(Drink drink, double temperature) {
         if (temperature > MAX_DRINK_TEMPERATURE) {
             temperature = MAX_DRINK_TEMPERATURE;
         }
@@ -116,4 +123,5 @@ public class DrinkService {
         }
         drink.setTemperature(temperature);
     }
+    //TODO: enforce temperature range
 }

@@ -10,12 +10,12 @@ public class MachineService {
     private Machine machine;
     private ArrayList drinks;
 
-    public Drink getDrinkFromId(int uuid) {
-        if (uuid < 0 || uuid > this.drinks.size()) {
+    public Drink getDrinkFromId(int drinkId) {
+        if (drinkId < 0 || drinkId > this.drinks.size()) {
             //TODO: Raise exception instead
-            uuid = 0;
+            drinkId = 0;
         }
-        Drink drink = (Drink) this.drinks.get(uuid);
+        Drink drink = (Drink) this.drinks.get(drinkId);
         return drink;
     }
 
@@ -40,13 +40,13 @@ public class MachineService {
                 (coffeeDrink > coffeeReservoir) ||
                 (milkDrink > milkReservoir)     ||
                 (cups < 1) ) {
-            //TODO: Throw exception
             //TODO: Assign error codes and check each one in succession
+            //TODO: Throw exception based on missing ingredient
         }
         else {
             waterReservoir -= (waterDrink + coffeeDrink); // Assume we consume water to brew coffee also.
             coffeeReservoir -= coffeeDrink; // 1:1 ratio of beans to water of max reservoir
-            milkReservoir -= milkDrink; // Solo milk tank
+            milkReservoir -= milkDrink; // Standalone milk tank
             cups -= 1; // Automatic cup dispenser
 
             machine.update(waterReservoir, coffeeReservoir, milkReservoir, cups);

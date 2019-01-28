@@ -13,7 +13,7 @@ import java.util.List;
 
 @Path("/drink")
 public class DrinkResource {
-
+    //TODO: Think about removing this resource and porting the functions over to MachineResource
     private DrinkService drinkService;
 
     public DrinkResource(DrinkService drinkService) {
@@ -32,8 +32,8 @@ public class DrinkResource {
     @GET
     @Path("/get")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getDrinkFromId(@QueryParam("id") int uuid) {
-        Drink drink = drinkService.getDrinkFromId(uuid);
+    public Response getDrinkFromId(@QueryParam("drinkId") int drinkId) {
+        Drink drink = drinkService.getDrinkFromId(drinkId);
 
         return Response.ok(drink).build();
     }
@@ -41,9 +41,9 @@ public class DrinkResource {
     @GET
     @Path("/addCoffee")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addCoffee(@QueryParam("id")int id,@QueryParam("amount") int amount) {
-        Drink drink = new Drink(drinkService.getDrinkFromId(id));
-        drinkService.addCoffee(drink,amount);
+    public Response addCoffee(@QueryParam("dinkId")int drinkId, @QueryParam("addCoffee") int addCoffee) {
+        Drink drink = new Drink(drinkService.getDrinkFromId(drinkId));
+        drinkService.addCoffee(drink, addCoffee);
 
         return Response.ok(drink).build();
     }

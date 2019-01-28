@@ -11,8 +11,8 @@ public class Machine {
 
     public Machine() {
         this.machineId = -1;
-        this.brand = "NULL";
-        this.make = "NULL";
+        this.brand = null;
+        this.make = null;
         this.waterReservoir = 0;
         this.coffeeReservoir = 0;
         this.milkReservoir = 0;
@@ -101,5 +101,4 @@ public class Machine {
         this.milkReservoir = milkReservoir;
         this.cups = cups;
     }
-
 }
