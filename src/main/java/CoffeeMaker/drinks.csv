@@ -1,7 +1,8 @@
-0;Hot water;80.0;10;0;0
-1;Cold Water;5.0;10;0;0
-2;Americano;70.0;8;2;0
-3;Cappuccino;70.0;0;2;8
-4;Latte;70.0;2;2;6
-5;Espresso;70.0;0;2;0
-6;Hot milk;70.0;0;0;10
+0;N/A;1.0;0;0;0
+1;Hot water;80.0;10;0;0
+2;Cold Water;5.0;10;0;0
+3;Americano;70.0;8;2;0
+4;Cappuccino;70.0;0;2;8
+5;Latte;70.0;2;2;6
+6;Espresso;70.0;0;2;0
+7;Hot milk;70.0;0;0;10

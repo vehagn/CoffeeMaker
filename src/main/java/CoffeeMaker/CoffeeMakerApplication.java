@@ -16,6 +16,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CoffeeMakerApplication extends Application<CoffeeMakerConfiguration> {
+    public static final int MAX_DRINK_SIZE = 10;
+    public static final double MAX_DRINK_TEMPERATURE = 95.0;
+    public static final double MIN_DRINK_TEMPERATURE =  1.0;
 
     public static void main(final String[] args) throws Exception {
         new CoffeeMakerApplication().run(args);
@@ -36,11 +39,11 @@ public class CoffeeMakerApplication extends Application<CoffeeMakerConfiguration
 
         ArrayList drinks = initialiseDrinks();
 
-        final InfoResource infoResource = new InfoResource();
+        final InfoResource MachineResource = new machineResource();
         final DrinkResource drinkResource = new DrinkResource(new DrinkService(drinks));
         //TODO: resource
 
-        environment.jersey().register(infoResource);
+        environment.jersey().register(machineResource);
         environment.jersey().register(drinkResource);
         //TODO: register
     }
