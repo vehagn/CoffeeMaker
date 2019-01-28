@@ -117,8 +117,8 @@
   <properties>
     <dropwizard.version>1.3.8</dropwizard.version>
     <mainClass>CoffeeMaker.CoffeeMakerApplication</mainClass>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 </project>
 

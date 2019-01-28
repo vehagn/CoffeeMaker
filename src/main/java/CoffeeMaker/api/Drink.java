@@ -1,6 +1,7 @@
 package CoffeeMaker.api;
 
 public class Drink {
+    private int uuid;
     private String name;
     private double temperature;
     private int water;
@@ -8,13 +9,22 @@ public class Drink {
     private int milk;
     private int size;
 
-    public Drink(String name, double temperature, int water, int coffee, int milk) {
+    public Drink(int uuid, String name, double temperature, int water, int coffee, int milk) {
+        this.uuid = uuid;
         this.name = name;
         this.temperature = temperature;
         this.water = water;
         this.coffee = coffee;
         this.milk = milk;
         this.size = water + coffee + milk;
+    }
+
+    public int getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(int uuid) {
+        this.uuid = uuid;
     }
 
     public String getName() {

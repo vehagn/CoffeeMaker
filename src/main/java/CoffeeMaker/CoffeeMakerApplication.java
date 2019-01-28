@@ -49,9 +49,8 @@ public class CoffeeMakerApplication extends Application<CoffeeMakerConfiguration
         List<List<String>> data = new ArrayList<>();
         ArrayList<Drink> drinks = new ArrayList<>();
 
-        //TODO: fix path
-        //BufferedReader br = new BufferedReader(new FileReader("/Users/Vehagn/IdeaProjects/CoffeeMaker/CoffeeMaker/src/main/java/CoffeeMaker/drinks.csv"));
-        BufferedReader br = new BufferedReader(new FileReader("/app/src/main/java/CoffeeMaker/drinks.csv"));
+        String drinksdb = "./src/main/java/CoffeeMaker/drinks.csv";
+        BufferedReader br = new BufferedReader(new FileReader(drinksdb));
         String line;
         while ((line = br.readLine()) != null) {
             String[] values = line.split(";");
@@ -59,13 +58,14 @@ public class CoffeeMakerApplication extends Application<CoffeeMakerConfiguration
         }
 
         for(List<String> d : data) {
-            String name = d.get(0);
-            float temperature = Float.parseFloat(d.get(1));
-            int water = Integer.parseInt(d.get(2));
-            int coffee = Integer.parseInt(d.get(3));
-            int milk = Integer.parseInt(d.get(4));
+            int uuid = Integer.parseInt(d.get(0));
+            String name = d.get(1);
+            float temperature = Float.parseFloat(d.get(2));
+            int water = Integer.parseInt(d.get(3));
+            int coffee = Integer.parseInt(d.get(4));
+            int milk = Integer.parseInt(d.get(5));
 
-            Drink drink = new Drink(name, temperature, water, coffee, milk);
+            Drink drink = new Drink(uuid, name, temperature, water, coffee, milk);
 
             drinks.add(drink);
         }
