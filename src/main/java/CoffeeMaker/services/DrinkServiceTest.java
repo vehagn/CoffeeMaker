@@ -15,6 +15,27 @@ class DrinkServiceTest {
         assertEquals(3,drink.getWater());
         assertEquals(4,drink.getCoffee());
         assertEquals(3,drink.getMilk());
+
+        drink.updateRecipe(11,0,0);
+        DrinkService.enforceDrinkSizeLimit(drink);
+        assertEquals(MAX_DRINK_SIZE,drink.getSize());
+        assertEquals(10,drink.getWater());
+        assertEquals(0,drink.getCoffee());
+        assertEquals(0,drink.getMilk());
+
+        drink.updateRecipe(0,11,0);
+        DrinkService.enforceDrinkSizeLimit(drink);
+        assertEquals(MAX_DRINK_SIZE,drink.getSize());
+        assertEquals(0,drink.getWater());
+        assertEquals(10,drink.getCoffee());
+        assertEquals(0,drink.getMilk());
+
+        drink.updateRecipe(0,0,11);
+        DrinkService.enforceDrinkSizeLimit(drink);
+        assertEquals(MAX_DRINK_SIZE,drink.getSize());
+        assertEquals(0,drink.getWater());
+        assertEquals(0,drink.getCoffee());
+        assertEquals(10,drink.getMilk());
     }
 
     @org.junit.jupiter.api.Test
@@ -26,6 +47,8 @@ class DrinkServiceTest {
     @org.junit.jupiter.api.Test
     void addingCoffeeDoesNotExceedMaxDrinkSize() {
         Drink drink = new Drink(0,"testDrink",10.0, 0, 0, 0);
+        DrinkService.addCoffee(drink,0);
+        assertEquals(0,drink.getCoffee());
         DrinkService.addCoffee(drink,5);
         assertEquals(5, drink.getSize());
         DrinkService.addCoffee(drink, 5);
@@ -37,16 +60,17 @@ class DrinkServiceTest {
     @org.junit.jupiter.api.Test
     void addCoffeeReplaceLogic() {
         Drink drink = new Drink(0,"testDrink",10.0,3,3,3);
+        DrinkService.addCoffee(drink,0);
         assertEquals(3,drink.getWater());
         assertEquals(3,drink.getCoffee());
         assertEquals(3,drink.getMilk());
         assertEquals(9,drink.getSize());
         DrinkService.addCoffee(drink,2);
         assertEquals(2,drink.getWater());
-        assertEquals(6,drink.getCoffee());
+        assertEquals(5,drink.getCoffee());
         assertEquals(3,drink.getMilk());
         assertEquals(MAX_DRINK_SIZE,drink.getSize());
-        DrinkService.addCoffee(drink,2);
+        DrinkService.addCoffee(drink,3);
         assertEquals(0,drink.getWater());
         assertEquals(8,drink.getCoffee());
         assertEquals(2,drink.getMilk());
@@ -56,6 +80,13 @@ class DrinkServiceTest {
         assertEquals(10,drink.getCoffee());
         assertEquals(0,drink.getMilk());
         assertEquals(MAX_DRINK_SIZE,drink.getSize());
+
+        drink.updateRecipe(10,0,0);
+        DrinkService.addCoffee(drink,0);
+        assertEquals(10,drink.getWater());
+        assertEquals(0,drink.getCoffee());
+        assertEquals(0,drink.getMilk());
+        assertEquals(10,drink.getSize());
     }
 
     @org.junit.jupiter.api.Test

@@ -7,6 +7,7 @@ public class Machine {
     private int waterReservoir;
     private int coffeeReservoir;
     private int milkReservoir;
+    private int cups;
 
     public Machine() {
         this.machineId = -1;
@@ -15,6 +16,7 @@ public class Machine {
         this.waterReservoir = 0;
         this.coffeeReservoir = 0;
         this.milkReservoir = 0;
+        this.cups = 0;
     }
 
     public Machine(Machine machine) {
@@ -24,15 +26,17 @@ public class Machine {
         this.waterReservoir = machine.getWaterReservoir();
         this.coffeeReservoir = machine.getCoffeeReservoir();
         this.milkReservoir = machine.getMilkReservoir();
+        this.cups = machine.getCups();
     }
 
-    public Machine(int machineId, String brand, String make, int waterReservoir, int coffeeReservoir, int milkReservoir) {
+    public Machine(int machineId, String brand, String make, int waterReservoir, int coffeeReservoir, int milkReservoir, int cups) {
         this.machineId = machineId;
         this.brand = brand;
         this.make = make;
         this.waterReservoir = waterReservoir;
         this.coffeeReservoir = coffeeReservoir;
         this.milkReservoir = milkReservoir;
+        this.cups = cups;
     }
 
     public int getMachineId() {
@@ -81,6 +85,21 @@ public class Machine {
 
     public void setMilkReservoir(int milkReservoir) {
         this.milkReservoir = milkReservoir;
+    }
+
+    public int getCups() {
+        return cups;
+    }
+
+    public void setCups(int cups) {
+        this.cups = cups;
+    }
+
+    public void update(int waterReservoir, int coffeeReservoir, int milkReservoir, int cups) {
+        this.waterReservoir = waterReservoir;
+        this.coffeeReservoir = coffeeReservoir;
+        this.milkReservoir = milkReservoir;
+        this.cups = cups;
     }
 
 }

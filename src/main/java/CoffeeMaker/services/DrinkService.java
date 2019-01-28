@@ -13,11 +13,11 @@ public class DrinkService {
         this.drinks = drinks;
     }
 
-    public ArrayList getAllDrinks() {
+    public ArrayList getDrinks() {
         return drinks;
     }
 
-    public Drink getDrinkFromID(int uuid) {
+    public Drink getDrinkFromId(int uuid) {
         if (uuid < 0 || uuid > this.drinks.size()) {
             //TODO: Raise exception instead
             uuid = 0;
@@ -29,25 +29,29 @@ public class DrinkService {
     public static void enforceDrinkSizeLimit(Drink drink) {
         int size = drink.getSize();
         int water = drink.getWater();
-        int coffee = drink.getWater();
+        int coffee = drink.getCoffee();
         int milk = drink.getMilk();
 
         while (size > MAX_DRINK_SIZE) {
             int overflow = (size-MAX_DRINK_SIZE);
-            int spill = 3-(overflow%3);
+            int spill = (overflow%3);
 
             switch (spill) {
                 case 1: // Try to remove water first
                     if (water > 0) {
                         water -= 1;
+                        break;
                     }
-                    break;
                 case 2: // Then milk
                     if (milk > 0) {
                         milk -= 1;
+                        break;
                     }
-                    break;
-                case 3: // Lastly coffee
+                    else if (water > 0) {
+                        water -= 1;
+                        break;
+                    }
+                case 0: // Lastly coffee
                     if (coffee > 0) {
                         coffee -= 1;
                     }
@@ -74,25 +78,30 @@ public class DrinkService {
 
         // Try to replace the rest of the requested added coffee
         int tryToAdd = amount - roomInCup;
+        int ableToAdd = 0;
 
         // Try to replace all the water with coffee first
         if (tryToAdd > 0) {
             if (water < tryToAdd) { // Try to replace water with coffee
                 tryToAdd -= water;
+                ableToAdd += water;
                 water = 0;
             } else {
                 water -= tryToAdd;
+                ableToAdd += tryToAdd;
                 tryToAdd = 0;
             }
             if (milk < tryToAdd) { // Replace milk with coffee is possible
                 tryToAdd -= milk;
+                ableToAdd += milk;
                 milk = 0;
             } else {
                 milk -= tryToAdd;
+                ableToAdd += tryToAdd;
                 tryToAdd = 0;
             }
             // Add as much coffee we've been able to make room for
-            coffee += (amount - tryToAdd);
+            coffee += ableToAdd;
         }
 
         drink.updateRecipe(water, coffee, milk);

@@ -1,9 +1,11 @@
 package CoffeeMaker;
 
 import CoffeeMaker.api.Drink;
+import CoffeeMaker.api.Machine;
 import CoffeeMaker.resources.DrinkResource;
-import CoffeeMaker.resources.InfoResource;
+import CoffeeMaker.resources.MachineResource;
 import CoffeeMaker.services.DrinkService;
+import CoffeeMaker.services.MachineService;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -37,23 +39,24 @@ public class CoffeeMakerApplication extends Application<CoffeeMakerConfiguration
     @Override
     public void run(final CoffeeMakerConfiguration configuration, final Environment environment) throws IOException {
 
+        //TODO: Read drinks and machine status from a database
         ArrayList drinks = initialiseDrinks();
+        Machine machine = new Machine(0,"Neversleep","5000+",100,100,100,20);
 
-        final InfoResource MachineResource = new machineResource();
+        final MachineResource machineResource = new MachineResource(new MachineService(machine, drinks));
         final DrinkResource drinkResource = new DrinkResource(new DrinkService(drinks));
-        //TODO: resource
 
         environment.jersey().register(machineResource);
         environment.jersey().register(drinkResource);
-        //TODO: register
     }
 
     private ArrayList<Drink> initialiseDrinks() throws IOException {
+        //TODO: Use an actual database
         List<List<String>> data = new ArrayList<>();
         ArrayList<Drink> drinks = new ArrayList<>();
 
-        String drinksdb = "./src/main/java/CoffeeMaker/drinks.csv";
-        BufferedReader br = new BufferedReader(new FileReader(drinksdb));
+        String drinksList = "./src/main/java/CoffeeMaker/drinks.csv";
+        BufferedReader br = new BufferedReader(new FileReader(drinksList));
         String line;
         while ((line = br.readLine()) != null) {
             String[] values = line.split(";");

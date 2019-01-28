@@ -24,7 +24,7 @@ public class DrinkResource {
     @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listDrinks() {
-        List drinks = drinkService.getAllDrinks();
+        List drinks = drinkService.getDrinks();
 
         return Response.ok(drinks).build();
     }
@@ -32,8 +32,8 @@ public class DrinkResource {
     @GET
     @Path("/get")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getDrinkFromID(@QueryParam("id") int uuid) {
-        Drink drink = drinkService.getDrinkFromID(uuid);
+    public Response getDrinkFromId(@QueryParam("id") int uuid) {
+        Drink drink = drinkService.getDrinkFromId(uuid);
 
         return Response.ok(drink).build();
     }
@@ -42,7 +42,7 @@ public class DrinkResource {
     @Path("/addCoffee")
     @Produces(MediaType.APPLICATION_JSON)
     public Response addCoffee(@QueryParam("id")int id,@QueryParam("amount") int amount) {
-        Drink drink = new Drink(drinkService.getDrinkFromID(id));
+        Drink drink = new Drink(drinkService.getDrinkFromId(id));
         drinkService.addCoffee(drink,amount);
 
         return Response.ok(drink).build();
