@@ -7,11 +7,11 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/info")
-public class InfoResource {
+@Path("/machine")
+public class MachineResource {
 
     @GET
-    @Path("/")
+    @Path("/info")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getBrand() {
        return Response.ok("Coffee Maker 5000+").build();
