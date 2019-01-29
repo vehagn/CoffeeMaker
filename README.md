@@ -64,20 +64,20 @@ __TODO: Read drink list from database, not CSV file.__
 
 ### Machine rules
 * Each Machine consists of 7 fields of information
-⋅⋅1 `machineId` -- unique machine identifier
-⋅⋅2 `brand` -- machine brand
-⋅⋅3 `make` -- machine make
-⋅⋅4 `waterReservoir` -- amount of water left
-⋅⋅5 `coffeeReservoir` -- amount of coffee left
-⋅⋅6 `milkReservoir` -- amount of milk left
-⋅⋅7 `cups` -- amount of cups left
+  1 `machineId` -- unique machine identifier
+  2 `brand` -- machine brand
+  3 `make` -- machine make
+  4 `waterReservoir` -- amount of water left
+  5 `coffeeReservoir` -- amount of coffee left
+  6 `milkReservoir` -- amount of milk left
+  7 `cups` -- amount of cups left
 * The machine dispenses drinks based on recipe
-..* It's possible to add more coffee before dispensing drink
+  * It's possible to add more coffee before dispensing drink
 * The machine should have enough resources present before trying to dispense
-..* Dispensing 1 unit of water consumes 1 unit of water
-..* Dispensing 1 unit of coffee consumes 1 unit of water and 1 unit of coffee
-..* Dispensing 1 unit of milk consumes 1 unit of milk
-..* Dispensing 1 drink consumes 1 cup
+  * Dispensing 1 unit of water consumes 1 unit of water
+  * Dispensing 1 unit of coffee consumes 1 unit of water and 1 unit of coffee
+  * Dispensing 1 unit of milk consumes 1 unit of milk
+  * Dispensing 1 drink consumes 1 cup
 * Return an Exception if not enough resources are present
 
 Too see machine info go to
