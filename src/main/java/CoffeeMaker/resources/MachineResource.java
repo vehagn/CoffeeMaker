@@ -36,16 +36,25 @@ public class MachineResource {
     public Response dispense(@QueryParam("drinkId") int drinkId, @QueryParam("addCoffee") int addCoffee) {
         //TODO: This should talk with drinkService, or remove drinkService
         Drink drink = new Drink(machineService.getDrinkFromId(drinkId));
+
+        // Add requested coffee
         DrinkService.addCoffee(drink, addCoffee);
+        // Make sure that temperature is between MIN_DRINK_TEMPERATURE and MAX_DRINK_TEMPERATURE
+        DrinkService.setDrinkTemperature(drink, drink.getTemperature());
 
-        machineService.dispenseDrink(drink);
-        Machine machine = machineService.getMachine();
+        try {
+            machineService.dispenseDrink(drink);
+            Machine machine = machineService.getMachine();
 
-        ArrayList info = new ArrayList();
-        info.add(machine);
-        info.add(drink);
+            ArrayList info = new ArrayList();
+            info.add(machine);
+            info.add(drink);
 
-        return Response.ok(info).build();
+            return Response.ok(info).build();
+        }
+        catch (Exception err) {
+            return Response.ok(err.toString()).build();
+        }
     }
 
 }

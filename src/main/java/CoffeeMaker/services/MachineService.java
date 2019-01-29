@@ -24,7 +24,7 @@ public class MachineService {
         this.drinks = drinks;
     }
 
-    public void dispenseDrink(Drink drink) {
+    public void dispenseDrink(Drink drink) throws Exception {
         //DrinkService.enforceDrinkSizeLimit(drink);
 
         int waterDrink = drink.getWater();
@@ -40,6 +40,7 @@ public class MachineService {
                 (coffeeDrink > coffeeReservoir) ||
                 (milkDrink > milkReservoir)     ||
                 (cups < 1) ) {
+            throw new Exception("Error: Not enough ingredients to make requested drink");
             //TODO: Assign error codes and check each one in succession
             //TODO: Throw exception based on missing ingredient
         }

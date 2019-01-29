@@ -6,6 +6,7 @@ import CoffeeMaker.resources.DrinkResource;
 import CoffeeMaker.resources.MachineResource;
 import CoffeeMaker.services.DrinkService;
 import CoffeeMaker.services.MachineService;
+
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
