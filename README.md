@@ -51,7 +51,7 @@ Each individual drink can be seen at
 by replacing `[id]` with the requested drink ID.
 
 Adding coffee to a given drink can be done using
-[`http://localhost:8080/api/drink/addCoffee?drinkId=[id]&addCoffee=[amount]`](http://localhost:8080/api/drink/get?drinkId=[id]&addCoffee=[amountee
+[`http://localhost:8080/api/drink/addCoffee?drinkId=[id]&addCoffee=[amount]`](http://localhost:8080/api/drink/get?drinkId=[id]&addCoffee=[amount])
 where `[id]` is the selected drink and `[amount]` is the requested amount of added coffee.
 
 __TODO: Functions for adding other ingredients__
