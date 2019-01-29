@@ -36,9 +36,9 @@ public class MachineService {
         int milkReservoir = machine.getMilkReservoir();
         int cups = machine.getCups();
 
-        if (    (waterDrink > waterReservoir)   ||
-                (coffeeDrink > coffeeReservoir) ||
-                (milkDrink > milkReservoir)     ||
+        if (    (waterDrink + coffeeDrink > waterReservoir)   ||
+                (coffeeDrink              > coffeeReservoir)  ||
+                (milkDrink                > milkReservoir)    ||
                 (cups < 1) ) {
             throw new Exception("Error: Not enough ingredients to make requested drink");
             //TODO: Assign error codes and check each one in succession
