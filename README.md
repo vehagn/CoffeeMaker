@@ -14,11 +14,13 @@ This coffee maker application can be started in on of two ways.
 
 To check that the application is running enter url [`http://localhost:8080/api`](http://localhost:8080/api).
 You should be greeted with a `{"code":404,"message":"HTTP 404 Not Found"}` message.
->__TODO: Implement more friendly welcome message__
+
+__TODO: Implement more friendly welcome message__
 
 ---
 ~~To see your applications health enter url `http://localhost:8081/healthcheck`~~
->__TODO: Implement Health Check__
+
+__TODO: Implement Health Check__
 
 ---
 
@@ -54,9 +56,11 @@ Adding coffee to a given drink can be done using
 [`http://localhost:8080/api/drink/addCoffee?drinkId=[id]&addCoffee=[amount]`](http://localhost:8080/api/drink/get?drinkId=[id]&addCoffee=[amount])
 where `[id]` is the selected drink and `[amount]` is the requested amount of added coffee.
 
->__TODO: Functions for adding other ingredients__
->__TODO: Better temperature management__
->__TODO: Read drink list from database, not CSV file.__
+__TODO: Functions for adding other ingredients__
+
+__TODO: Better temperature management__
+
+__TODO: Read drink list from database, not CSV file.__
 
 ### Machine rules
 * Each Machine consists of 7 fields of information
@@ -83,5 +87,6 @@ In order to dispense a drink invoke
 [`http://localhost:8080/api/machine/dispense?drinkId=[id]&addCoffee=[amount]`](http://localhost:8080/api/machine/dispense?drinkId=[id]&addCoffee=[amount])
 where [id] is the ID of the requested drink and [amount] is the requested amount of added coffee.
 
->__TODO: Add refill functions__
->__TODO: Read machine status from database__
+__TODO: Add refill functions__
+
+__TODO: Read machine status from database__
