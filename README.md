@@ -2,15 +2,10 @@
 
 ## How to start the CoffeeMaker application
 ---
-This coffee maker application can be started in on of two ways.
-
-### Using docker
-1. Run `docker build . -t coffeemaker` to build docker image application
+1. Run `docker build . -t coffeemaker` to build docker image application from root directory
 2. Start application with `docker run -p 8080:8080 coffeemaker`
 
-### Compiling locally
-1. Run `mvn clean install` in root directory to build
-2. Start application with `java -jar target/CoffeeMaker-1.0-SNAPSHOT.jar server config.yml`
+Alternatively pull docker image directly by writing `docker pull vehagn/coffeemaker` and running the image using `docker run -p 8080:8080 vehagn/coffeemaker`
 
 To check that the application is running enter url [`http://localhost:8080/api`](http://localhost:8080/api).
 You should be greeted with a `{"code":404,"message":"HTTP 404 Not Found"}` message.
@@ -86,6 +81,8 @@ Too see machine info go to
 In order to dispense a drink invoke 
 [`http://localhost:8080/api/machine/dispense?drinkId=[id]&addCoffee=[amount]`](http://localhost:8080/api/machine/dispense?drinkId=[id]&addCoffee=[amount])
 where [id] is the ID of the requested drink and [amount] is the requested amount of added coffee.
+
+__TODO: Add unit tests__
 
 __TODO: Add refill functions__
 
