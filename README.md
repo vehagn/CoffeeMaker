@@ -28,21 +28,21 @@ __TODO: Implement Health Check__
 
 ### Drink rules
 * Each Drink consists of 7 fields of information
-⋅⋅1 `drinkId` -- unique identifier for drink
-⋅⋅2 `name` -- name of drink
-⋅⋅3 `temperature` -- serving temperature of drink
-⋅⋅4 `water` -- units of water in drink
-⋅⋅5 `coffee` -- units of coffee in drink
-⋅⋅6 `milk` -- units of milk in drink
-⋅⋅7 `size` -- total ingredient units in drink
+  1. `drinkId` -- unique identifier for drink
+  2. `name` -- name of drink
+  3. `temperature` -- serving temperature of drink
+  4. `water` -- units of water in drink
+  5. `coffee` -- units of coffee in drink
+  6. `milk` -- units of milk in drink
+  7. `size` -- total ingredient units in drink
 * Each drink consists of 3 ingredients: water, coffee, and milk.
 * Each ingredient is given in unit increments between 0 and 10.
 * The size of a drink is the sum off all ingredients.
 * The maximum size of any drink is 10 (`MAX_DRINK_SIZE`) units.
 * Coffee can be added to drinks
-..* If adding coffee exceeds `MAX_DRINK_SIZE` size it displaces other ingredients
+  * If adding coffee exceeds `MAX_DRINK_SIZE` size it displaces other ingredients
 * If a drink exceeds `MAX_DRINK_SIZE` ingredients are removed until it no longer exceeds
-..* Ingredients are removed one at a time, trying to balance the final drink
+  * Ingredients are removed one at a time, trying to balance the final drink
 * The drink should be served between 1.0 (`MIN_DRINK_TEMPERATURE`) and 95.0 (`MAX_DRINK_TEMPERATURE`)
 
 A list of available drinks with their corresponding recipe can be view by entering url
@@ -64,13 +64,13 @@ __TODO: Read drink list from database, not CSV file.__
 
 ### Machine rules
 * Each Machine consists of 7 fields of information
-  1 `machineId` -- unique machine identifier
-  2 `brand` -- machine brand
-  3 `make` -- machine make
-  4 `waterReservoir` -- amount of water left
-  5 `coffeeReservoir` -- amount of coffee left
-  6 `milkReservoir` -- amount of milk left
-  7 `cups` -- amount of cups left
+  1. `machineId` -- unique machine identifier
+  2. `brand` -- machine brand
+  3. `make` -- machine make
+  4. `waterReservoir` -- amount of water left
+  5. `coffeeReservoir` -- amount of coffee left
+  6. `milkReservoir` -- amount of milk left
+  7. `cups` -- amount of cups left
 * The machine dispenses drinks based on recipe
   * It's possible to add more coffee before dispensing drink
 * The machine should have enough resources present before trying to dispense
